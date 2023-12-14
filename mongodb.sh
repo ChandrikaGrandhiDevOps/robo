@@ -27,6 +27,20 @@ else
     echo -e "$R i was sucessfully installed"
 fi
 
-cp mongo.repo /etc/yum.repos.d/
+cp mongo.repo /etc/yum.repos.d/ &>> $LOGFILE
 
-VALIDATE $? "copied sucessfully"
+VALIDATE $? "copied MONGODB repo sucessfully"
+
+dnf install mongodb-org -y &>> $LOGFILE
+
+VALIDATE $? "installed"
+
+systemctl enable mongod &>> $LOGFILE
+
+VALIDATE $? "enabeled"
+
+systemctl start mongod &>> $LOGFILE
+
+VALIDATE $? "started"
+
+sed -i's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>> $LOGFILE
