@@ -41,35 +41,35 @@ VALIDATE $? "created robo user"
 mkdir /app         &>> $LOGFILE
 VALIDTAE $? "created direcory"
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-VALIDTAE $? "link " &>> $LOGFILE
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
+VALIDTAE $? "link " 
 
-cd /app 
-VALIDTAE $? "app dire" &>> $LOGFILE
+cd /app  &>> $LOGFILE
+VALIDTAE $? "app dire" 
 
-unzip /tmp/catalogue.zip
-VALIDTAE $? "unzipped" &>> $LOGFILE
+unzip /tmp/catalogue.zip &>> $LOGFILE
+VALIDTAE $? "unzipped" 
 
-npm install 
-VALIDTAE $? "installled " &>> $LOGFILE
+npm install &>> $LOGFILE
+VALIDTAE $? "installled " 
 
-cp /home/centos/robo/catalogue.service /etc/systemd/system/ 
-VALIDATE $? "service file" &>> $LOGFILE
+cp /home/centos/robo/catalogue.service /etc/systemd/system/  &>> $LOGFILE
+VALIDATE $? "service file"
 
-systemctl daemon-reload
-VALIDATE $? "reloaded" &>> $LOGFILE
+systemctl daemon-reload &>> $LOGFILE
+VALIDATE $? "reloaded" 
 
-systemctl enable catalogue
-VALIDATE $? "enabeled" &>> $LOGFILE
+systemctl enable catalogue &>> $LOGFILE
+VALIDATE $? "enabeled" 
 
-systemctl start catalogue
-VALIDATE $? "started" &>> $LOGFILE
+systemctl start catalogue &>> $LOGFILE
+VALIDATE $? "started" 
 
-cp /home/cewntos/robo/mongodb.repo /etc/yum.repos.d/
-VALIDATE $? "started" &>> $LOGFILE
+cp /home/cewntos/robo/mongodb.repo /etc/yum.repos.d/ &>> $LOGFILE
+VALIDATE $? "started" 
 
-dnf install mongodb-org-shell -y
-VALIDATE $? "install" &>> $LOGFILE
+dnf install mongodb-org-shell -y &>> $LOGFILE
+VALIDATE $? "install" 
 
-mongo --host mongodb.crobo.shop</app/schema/catalogue.js
-VALIDATE $? "mongo host" &>> $LOGFILE
+mongo --host mongodb.crobo.shop</app/schema/catalogue.js &>> $LOGFILE
+VALIDATE $? "mongo host" 
