@@ -35,19 +35,24 @@ VALIDATE $? "Sucessfullly enabeled"
 dnf install nodejs -y                   &>> $LOGFILE
 VALIDATE $? "sucessfully installed"
 
-useradd roboshop                        &>> $LOGFILE
-VALIDATE $? "created robo user"     
+id roboshop
+if [ $? -ne 0 ]
+then   
+    useradd roboshop                        &>> $LOGFILE
+    VALIDATE $? "created robo user"  
+else
+    echo -e "alraedt exist $Y ....SKIPPING)       
 
-mkdir /app         &>> $LOGFILE
+mkdir -p /app         &>> $LOGFILE
 VALIDTAE $? "created direcory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
 VALIDTAE $? "link " 
 
 cd /app  &>> $LOGFILE
-VALIDTAE $? "app dire" 
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+
+unzip -o /tmp/catalogue.zip &>> $LOGFILE
 VALIDTAE $? "unzipped" 
 
 npm install &>> $LOGFILE
