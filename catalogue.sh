@@ -64,3 +64,12 @@ VALIDATE $? "enabeled" &>> $LOGFILE
 
 systemctl start catalogue
 VALIDATE $? "started" &>> $LOGFILE
+
+cp /home/cewntos/robo/mongodb.repo /etc/yum.repos.d/
+VALIDATE $? "started" &>> $LOGFILE
+
+dnf install mongodb-org-shell -y
+VALIDATE $? "install" &>> $LOGFILE
+
+mongo --host mongodb.crobo.shop</app/schema/catalogue.js
+VALIDATE $? "mongo host" &>> $LOGFILE
