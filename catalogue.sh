@@ -36,14 +36,15 @@ dnf install nodejs -y                   &>> $LOGFILE
 VALIDATE $? "sucessfully installed"
 
 id roboshop
-if [ $? -ne 0 ]
-then   
-    useradd roboshop                        &>> $LOGFILE
+ if [ $? -ne 0 ]
+  then   
+    useradd roboshop                        
     VALIDATE $? "created robo user"  
-else
-    echo -e "alraedt exist $Y ....SKIPPING)       
+   else
+    echo -e "alraedt exist $Y ....SKIPPING"    
+ fi
 
-mkdir -p /app         &>> $LOGFILE
+mkdir -p /app       
 VALIDTAE $? "created direcory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
@@ -77,4 +78,4 @@ dnf install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "install" 
 
 mongo --host mongodb.crobo.shop</app/schema/catalogue.js &>> $LOGFILE
-VALIDATE $? "mongo host" 
+VALIDATE $? "mongo host"
