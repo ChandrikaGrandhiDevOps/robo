@@ -45,19 +45,19 @@ id roboshop
  fi
 
 mkdir -p /app       
-VALIDTAE $? "created direcory"
+VALIDATE $? "created direcory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
-VALIDTAE $? "link " 
+VALIDATE $? "link " 
 
 cd /app  &>> $LOGFILE
 
 
 unzip -o /tmp/catalogue.zip &>> $LOGFILE
-VALIDTAE $? "unzipped" 
+VALIDATE $? "unzipped" 
 
 npm install &>> $LOGFILE
-VALIDTAE $? "installled " 
+VALIDATE $? "installled " 
 
 cp /home/centos/robo/catalogue.service /etc/systemd/system/  &>> $LOGFILE
 VALIDATE $? "service file"
