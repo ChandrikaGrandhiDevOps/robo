@@ -24,7 +24,7 @@ then
     echo -e "$R ERROR:: FAILED" &>> $LOGFILE
     
 else
-    echo -e "$R i was sucessfully installed"
+    echo -e "$G .....SUCCESS"
 fi
 dnf module disable nodejs -y            &>> $LOGFILE
 VALIDATE $? "Sucessfully disabeled"
