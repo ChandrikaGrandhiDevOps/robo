@@ -58,3 +58,28 @@ VALIDATE $? "installled "
 mv target/shipping-1.0.jar shipping.jar
 
 
+cp /home/centos/robo/shipping.service /etc/systemd/system/shipping.service
+VALIDATE $? "copied"
+
+systemctl daemon-reload
+VALIDATE $? "reloaded"
+
+systemctl enable shipping 
+VALIDATE $? "enabled ship"
+
+systemctl start shipping
+VALIDATE $? "started shipping"
+
+
+dnf install mysql -y
+VALIDATE $? "installed mysql"
+
+
+mysql -h <mysql.crobo.sql> -uroot -pRoboShop@1 < /app/schema/shipping.sql 
+VALIDATE $? "schemas"
+
+
+systemctl restart shipping
+VALIDATE $? "restarted"
+
+
