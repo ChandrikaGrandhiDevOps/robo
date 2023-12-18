@@ -75,7 +75,7 @@ dnf install mysql -y
 VALIDATE $? "installed mysql"
 
 
-mysql -h <mysql.crobo.sql> -uroot -pRoboShop@1 < /app/schema/shipping.sql 
+mysql -h mysql.crobo.sql -uroot -pRoboShop@1 < /app/schema/shipping.sql 
 VALIDATE $? "schemas"
 
 
