@@ -17,7 +17,7 @@ VALIDATE(){
         exit 1
     else
         echo -e "$G $2 ...........SUCCESS $N"
-    fi
+fi
 }
 if [ $ID -ne 0 ]
 then
@@ -51,6 +51,7 @@ curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zi
 VALIDATE $? "link " 
 
 cd /app  &>> $LOGFILE
+VALIDATE $? "directory"
 
 
 unzip -o /tmp/catalogue.zip &>> $LOGFILE
