@@ -72,7 +72,7 @@ VALIDATE $? "enabeled"
 systemctl start catalogue &>> $LOGFILE
 VALIDATE $? "started" 
 
-cp /home/centos/robo/mongodb.repo /etc/yum.repos.d/ &>> $LOGFILE
+cp /home/centos/robo/mongo.repo /etc/yum.repos.d/ &>> $LOGFILE
 VALIDATE $? "started" 
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
