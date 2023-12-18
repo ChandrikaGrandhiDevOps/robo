@@ -21,7 +21,7 @@ fi
 }
 if [ $ID -ne 0 ]
 then
-    echo -e "$R ERROR:: FAILED" &>> $LOGFILE
+    echo -e "$R ERROR:: FAILED" 
     
 else
     echo -e "$G .....SUCCESS"
