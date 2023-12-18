@@ -55,8 +55,8 @@ cd /app
 
 
 unzip -o /tmp/cart.zip 
-VALIDATE $? "unzipped" 
-
+VALIDATE $? "unzipped"  &>> $LOGFILE
+ 
 npm install 
 VALIDATE $? "installled" 
 
