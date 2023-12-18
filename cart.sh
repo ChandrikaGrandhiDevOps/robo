@@ -70,7 +70,7 @@ systemctl enable cart &>> $LOGFILE
 VALIDATE $? "enabeled" 
 
 systemctl start cart &>> $LOGFILE
-VALIDATE $? "started" 
+VALIDATE $? "started"
 
 
 
