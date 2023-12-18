@@ -66,10 +66,10 @@ VALIADTE $? "copied service file"
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "reloaded" 
 
-systemctl enable catalogue &>> $LOGFILE
+systemctl enable cart &>> $LOGFILE
 VALIDATE $? "enabeled" 
 
-systemctl start catalogue &>> $LOGFILE
+systemctl start cart &>> $LOGFILE
 VALIDATE $? "started" 
 
 
