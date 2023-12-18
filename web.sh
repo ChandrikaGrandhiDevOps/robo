@@ -15,7 +15,7 @@ VALIDATE(){
         echo -e "$R ERROR:: $2 ....FAILED" &>> $LOGFILE
         exit 1
     else
-        echo -e "$R $2 .....SUCCESS $N"
+        echo -e "$G $2 .....SUCCESS $N"
     fi
 }
 if [ $ID -ne 0 ]
