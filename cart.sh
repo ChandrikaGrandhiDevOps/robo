@@ -7,7 +7,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
-exec &>> $LOGFILE
+
 
 echo "Script started executing at $TIMESTAMP" 
 
@@ -26,49 +26,49 @@ then
 else
     echo -e "$R i was sucessfully installed"
 fi
-dnf module disable nodejs -y            
-VALIDATE $? "Sucessfully disabeled"
+dnf module disable nodejs -y     &>> $LOGFILE       
+VALIDATE $? "Sucessfully disabeled"  
 
-dnf module enable nodejs:18 -y          
+dnf module enable nodejs:18 -y          &>> $LOGFILE 
 VALIDATE $? "Sucessfullly enabeled"
  
-dnf install nodejs -y                   
+dnf install nodejs -y                   &>> $LOGFILE 
 VALIDATE $? "sucessfully installed"
 
-id roboshop
+id roboshop          &>> $LOGFILE 
  if [ $? -ne 0 ]
   then   
-    useradd roboshop                        
+    useradd roboshop                      &>> $LOGFILE   
     VALIDATE $? "created robo user"  
    else
     echo -e "alraedt exist $Y ....SKIPPING"    
  fi
 
-mkdir -p /app       
+mkdir -p /app       &>> $LOGFILE
 VALIDATE $? "created direcory"
 
 curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>> $LOGFILE
 VALIDATE $? "link " 
 
-cd /app  
+cd /app  &>> $LOGFILE
+VALIDATE $? "directory"
 
-
-unzip -o /tmp/cart.zip 
+unzip -o /tmp/cart.zip &>> $LOGFILE
 VALIDATE $? "unzipped"  
  
-npm install 
+npm install  &>> $LOGFILE
 VALIDATE $? "installled" 
 
-cp /home/centos/robo/cart.service /etc/systemd/system/cart.service
-VALIDATE $? "copied service file"  &>> $LOGFILE
+cp /home/centos/robo/cart.service /etc/systemd/system/cart.service    &>> $LOGFILE
+VALIDATE $? "copied service file"  
 
-systemctl daemon-reload 
+systemctl daemon-reload  &>> $LOGFILE
 VALIDATE $? "reloaded" 
 
-systemctl enable cart 
+systemctl enable cart  &>> $LOGFILE
 VALIDATE $? "enabeled" 
 
-systemctl start cart 
+systemctl start cart  &>> $LOGFILE
 VALIDATE $? "started"
 
 
