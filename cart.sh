@@ -48,7 +48,7 @@ id roboshop
 mkdir -p /app       
 VALIDATE $? "created direcory"
 
-curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
+curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>> $LOGFILE
 VALIDATE $? "link " 
 
 cd /app  
