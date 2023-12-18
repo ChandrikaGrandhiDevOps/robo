@@ -77,5 +77,5 @@ VALIDATE $? "started"
 dnf install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "install" 
 
-mongo --host mongodb.crobo.shop</app/schema/catalogue.js &>> $LOGFILE
-VALIDATE $? "mongo host"
+mongo --host mongodb.crobo.shop </app/schema/catalogue.js
+VALIDATE $? "ok"
