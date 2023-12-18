@@ -9,31 +9,30 @@ N="\e[0m"
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 exec &>> $LOGFILE
 
-echo "Script started executing at $TIMESTAMP" &>> $LOGFILE
+echo "Script started executing at $TIMESTAMP" 
 
 VALIDATE(){
  if [ $1 -ne 0 ]
     then
-        echo -e "$R ERROR:: $2 FAILED" &>> $LOGFILE
-        exit 1
+        echo -e "$R ERROR:: $2 FAILED" 
     else
         echo -e "$Y $2 i was installed it suceesesfully $N"
     fi
 }
 if [ $ID -ne 0 ]
 then
-    echo -e "$R ERROR:: FAILED" &>> $LOGFILE
+    echo -e "$R ERROR:: FAILED" 
     
 else
     echo -e "$R i was sucessfully installed"
 fi
-dnf module disable nodejs -y            &>> $LOGFILE
+dnf module disable nodejs -y            
 VALIDATE $? "Sucessfully disabeled"
 
-dnf module enable nodejs:18 -y          &>> $LOGFILE
+dnf module enable nodejs:18 -y          
 VALIDATE $? "Sucessfullly enabeled"
  
-dnf install nodejs -y                   &>> $LOGFILE
+dnf install nodejs -y                   
 VALIDATE $? "sucessfully installed"
 
 id roboshop
@@ -55,7 +54,7 @@ cd /app
 
 
 unzip -o /tmp/cart.zip 
-VALIDATE $? "unzipped"  &>> $LOGFILE
+VALIDATE $? "unzipped"  
  
 npm install 
 VALIDATE $? "installled" 
@@ -63,13 +62,13 @@ VALIDATE $? "installled"
 cp /home/centos/robo/cart.service /etc/systemd/system/cart.service
 VALIADTE $? "copied service file"
 
-systemctl daemon-reload &>> $LOGFILE
+systemctl daemon-reload 
 VALIDATE $? "reloaded" 
 
-systemctl enable cart &>> $LOGFILE
+systemctl enable cart 
 VALIDATE $? "enabeled" 
 
-systemctl start cart &>> $LOGFILE
+systemctl start cart 
 VALIDATE $? "started"
 
 
