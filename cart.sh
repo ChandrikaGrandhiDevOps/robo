@@ -17,7 +17,7 @@ VALIDATE(){
         echo -e "$R ERROR:: $2 FAILED" &>> $LOGFILE
         exit 1
     else
-        echo -e "$R $2 i was installed it suceesesfully $N"
+        echo -e "$Y $2 i was installed it suceesesfully $N"
     fi
 }
 if [ $ID -ne 0 ]
@@ -60,7 +60,7 @@ VALIDATE $? "unzipped"
 npm install 
 VALIDATE $? "installled" 
 
-cp /home/centos/cart.service /etc/systemd/system/cart.service
+cp /home/centos/robo/cart.service /etc/systemd/system/cart.service
 VALIADTE $? "copied service file"
 
 systemctl daemon-reload &>> $LOGFILE
