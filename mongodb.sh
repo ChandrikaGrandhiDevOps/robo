@@ -27,7 +27,7 @@ else
     echo -e "$R i was sucessfully installed"
 fi
 
-cp mongo.repo /etc/yum.repos.d/ &>> $LOGFILE
+cp /home/centos/robo/mongo.repo /etc/yum.repos.d/ &>> $LOGFILE
 
 VALIDATE $? "copied MONGODB repo sucessfully"
 
