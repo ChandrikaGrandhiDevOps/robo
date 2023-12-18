@@ -13,7 +13,7 @@ echo "Script started executing at $TIMESTAMP" &>> $LOGFILE
 VALIDATE(){
  if [ $1 -ne 0 ]
     then
-        echo -e "$R ERROR:: $2 FAILED" &>> $LOGFILE
+        echo -e "$R ERROR:: $2 FAILED"
         exit 1
     else
         echo -e "$G $2 ...........SUCCESS $N"
@@ -72,7 +72,7 @@ VALIDATE $? "enabeled"
 systemctl start catalogue &>> $LOGFILE
 VALIDATE $? "started" 
 
-cp /home/centos/robo/mongo.repo /etc/yum.repos.d/ &>> $LOGFILE
+cp /home/centos/robo/mongodb.repo /etc/yum.repos.d/ &>> $LOGFILE
 VALIDATE $? "started" 
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
