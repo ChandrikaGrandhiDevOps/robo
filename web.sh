@@ -25,29 +25,29 @@ then
 else
     echo -e "$R i was sucessfully installed"
 fi
-dnf install nginx -y
+dnf install nginx -y        &>> $LOGFILE
 VALIDATE $? "nginx installed"
 
-systemctl enable nginx
+systemctl enable nginx &>> $LOGFILE
 VALIDATE $? "enabled nginx"
 
-systemctl start nginx
+systemctl start nginx     &>> $LOGFILE
 VALIDATE $? "started nginx"
 
-rm -rf /usr/share/nginx/html/*
+rm -rf /usr/share/nginx/html/*  &>> $LOGFILE
 VALIDATE $? "removed"
 
-curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip
+curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>> $LOGFILE
 VALIDATE $? "zip file"
 
-cd /usr/share/nginx/html
+cd /usr/share/nginx/html &>> $LOGFILE
 VALIDATE $? "goto html"
 
-unzip /tmp/web.zip
+unzip /tmp/web.zip &>> $LOGFILE
 VALIDATE $? "unzipped"
 
-cp /home/centos/robo/roboshop.conf /etc/nginx/default.d/roboshop.conf 
+cp /home/centos/robo/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOGFILE
 VALIDATE $? "copied"
 
-systemctl restart nginx 
+systemctl restart nginx  &>> $LOGFILE
 VALIDATE $? "restarted"
