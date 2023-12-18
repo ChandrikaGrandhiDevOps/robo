@@ -17,21 +17,21 @@ VALIDATE(){
         exit 1
     else
         echo -e "$G  $2 i was installed it suceesesfully $N"
-    fi
+fi
 }
 if [ $ID -ne 0 ]
-then
+ then
     echo -e "$R ERROR:: FAILED"
-    
-else
+    exit 1
+ else
     echo -e "$R i was sucessfully installed"
 fi
 
-cp /home/centos/robo/mongo.repo /etc/yum.repos.d/ &>> $LOGFILE
+cp /home/centos/robo/mongo.repo /etc/yum.repos.d/mongo.repo 
 
 VALIDATE $? "copied MONGODB repo sucessfully"
 
-dnf install mongodb-org -y &>> $LOGFILE
+dnf install mongodb-org -y 
 
 VALIDATE $? "installed"
 
