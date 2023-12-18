@@ -60,7 +60,7 @@ npm install
 VALIDATE $? "installled" 
 
 cp /home/centos/robo/cart.service /etc/systemd/system/cart.service
-VALIDATE $? "copied service file"
+VALIDATE $? "copied service file"  &>> $LOGFILE
 
 systemctl daemon-reload 
 VALIDATE $? "reloaded" 
