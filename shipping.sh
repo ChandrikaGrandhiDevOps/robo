@@ -42,7 +42,7 @@ id roboshop
 mkdir -p /app       
 VALIDATE $? "created direcory"
 
-curl -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>> $LOGFILE
+curl -L /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>> $LOGFILE
 VALIDATE $? "link " 
 
 cd /app  &>> $LOGFILE
@@ -53,9 +53,10 @@ unzip -o /tmp/shipping.zip &>> $LOGFILE
 VALIDATE $? "unzipped" 
 
 mvn clean package &>> $LOGFILE
-VALIDATE $? "installled " 
+VALIDATE $? "installed" 
 
 mv target/shipping-1.0.jar shipping.jar
+VALIDATE $? "moved"
 
 
 cp /home/centos/robo/shipping.service /etc/systemd/system/shipping.service
