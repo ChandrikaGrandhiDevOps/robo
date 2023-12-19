@@ -16,7 +16,7 @@ echo "Script started executing at $TIMESTAMP" &>> $LOGFILE
 VALIDATE(){
  if [ $1 -ne 0 ]
     then
-        echo -e "$R ERROR:: $2 FAILED" &>> $LOGFILE
+        echo -e "$R ERROR:: $2 FAILED"
         exit 1
     else
         echo -e "$R $2 i was installed it suceesesfully $N"
@@ -24,7 +24,7 @@ VALIDATE(){
 }
 if [ $ID -ne 0 ]
 then
-    echo -e "$R ERROR:: FAILED" &>> $LOGFILE
+    echo -e "$R ERROR:: FAILED" 
     
 else
     echo -e "$R i was sucessfully installed"
