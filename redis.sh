@@ -27,26 +27,26 @@ else
     echo -e "$R i was sucessfully installed"
 fi
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>> $LOGFILE
 
-VALIDATE $? "installing rpm" &>> $LOGFILE
+VALIDATE $? "installing rpm"  
 
-dnf module enable redis:remi-6.2 -y
+dnf module enable redis:remi-6.2 -y &>> $LOGFILE
 
-VALIDATE $? "enabling redis" &>> $LOGFILE
+VALIDATE $? "enabling redis" 
 
-dnf install redis -y
+dnf install redis -y  &>> $LOGFILE
 
-VALIDATE $? " install redis" &>> $LOGFILE
+VALIDATE $? " install redis" 
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf  &>> $LOGFILE
 
-VALIDATE $? "validate connections" &>> $LOGFILE
+VALIDATE $? "validate connections" 
 
-systemctl enable redis
+systemctl enable redis &>> $LOGFILE
 
-VALIDATE $? "enabeled redis" &>> $LOGFILE
+VALIDATE $? "enabeled redis" 
 
-systemctl start redis
+systemctl start redis &>> $LOGFILE
 
-VALIDATE $? "started redis" &>> $LOGFILE
+VALIDATE $? "started redis" 
