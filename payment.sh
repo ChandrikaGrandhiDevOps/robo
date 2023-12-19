@@ -36,7 +36,7 @@ id roboshop
     useradd roboshop                        
     VALIDATE $? "created robo user"  
    else
-    echo -e "alraedt exist $Y ....SKIPPING"    
+    echo -e "alraedy exist $Y ....SKIPPING"    
  fi
 
  mkdir -p /app       &>> $LOGFILE
