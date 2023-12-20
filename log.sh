@@ -16,6 +16,7 @@ FILES_TO_DELETE=$(find $SOURCE_DIR -type f -mtime +1 -name "*.js")
 while IFS= read -r line
 do
    echo "Deleting file: $line"
+   rm -rf $line
 
 done <<< $FILES_TO_DELETE
 
