@@ -11,7 +11,7 @@
       echo -e "$R source directory dosn't exist"
 fi 
 
-FILES_TO_DELETE=$(find . -t f -mtime +7 --name "*.log")
+FILES_TO_DELETE=$(find . -type f -mtime +7 -name "*.log")
 
 while IFS= read -r line
 do
