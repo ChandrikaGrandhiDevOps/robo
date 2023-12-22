@@ -22,14 +22,14 @@ do
   --hosted-zone-id $ZONE_ID \
   --change-batch "
   {
-    "Comment": "Testing creating a record set"
-    ,"Changes": [{
-      "Action"              : "CREATE"
-      ,"ResourceRecordSet"  : {
-        "Name"              : "$i.crobo.shop"
-        ,"Type"             : "CNAME"
-        ,"TTL"              : 120
-        ,"ResourceRecords"  : [{
+    "Comment": "Testing creating a record set",
+    "Changes": [{
+      "Action"              : "CREATE",
+      "ResourceRecordSet"  : {
+        "Name"              : "$i.crobo.shop",
+        "Type"             : "CNAME",
+        "TTL"              : 120,
+        "ResourceRecords"  : [{
             "Value"         : "$IP_ADDRESS"
         }]
       }
