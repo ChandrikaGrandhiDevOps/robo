@@ -4,7 +4,7 @@ AMI=ami-03265a0778a880afb
 SG_ID=sg-0d9d67af01c6a1199 
 INSTANCES=("mongodb" "redis" "mysql" "user" "cart" "payment" "shipping" "dispatch" "catalogue" "web")
 ZONE_ID=Z03096722Q6JHG4T1T97R
-DOMAIN_NAME="daws76.online"
+DOMAIN_NAME="crobo.sh"
 for i in "${INSTANCES[@]}"
 do
     if [ $i == "mongodb" ]||[ $i == "mysql" ]||[ $i == "shipping" ]
@@ -20,20 +20,20 @@ do
 
   aws route53 change-resource-record-sets \
   --hosted-zone-id $ZONE_ID \
-  --change-batch "
+  --change-batch '
   {
     "Comment": "Testing creating a record set",
     "Changes": [{
       "Action"              : "CREATE",
       "ResourceRecordSet"  : {
-        "Name"              : "$i.crobo.shop",
-        "Type"             : "CNAME",
-        "TTL"              : 120,
+        "Name"              : "'$i'.'$DOMAIN_NAME'",
+        "Type"             : "A",
+        "TTL"              : 1,
         "ResourceRecords"  : [{
-            "Value"         : "$IP_ADDRESS"
+            "Value"         : "'$IP_ADDRESS'"
         }]
       }
-    }]
+      }]
   }
-  "
+       '
 done
