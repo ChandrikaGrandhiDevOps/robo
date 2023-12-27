@@ -2,7 +2,7 @@
 
 AMI=ami-03265a0778a880afb
 SG_ID=sg-0d9d67af01c6a1199 
-INSTANCES=("mongodb" "redis" "mysql" "user" "cart" "payment" "shipping" "dispatch" "catalogue" "web")
+INSTANCES=("rabbitmq" "mongodb" "redis" "mysql" "user" "cart" "payment" "shipping" "dispatch" "catalogue" "web")
 ZONE_ID=Z03096722Q6JHG4T1T97R
 DOMAIN_NAME="crobo.shop"
 for i in "${INSTANCES[@]}"
